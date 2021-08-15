@@ -5,6 +5,7 @@ import (
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/alienvault"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/anubis"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/archiveis"
+	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/baidu"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/binaryedge"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/bufferover"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/censys"
@@ -40,6 +41,7 @@ import (
 
 // DefaultSources contains the list of fast sources used by default.
 var DefaultSources = []string{
+	"baidu",
 	"alienvault",
 	"anubis",
 	"bufferover",
@@ -82,6 +84,7 @@ var DefaultRecursiveSources = []string{
 
 // DefaultAllSources contains list of all sources
 var DefaultAllSources = []string{
+	"baidu",
 	"alienvault",
 	"anubis",
 	"archiveis",
@@ -207,6 +210,8 @@ func (a *Agent) addSources(sources []string) {
 			a.sources[source] = &zoomeye.Source{}
 		case "fofa":
 			a.sources[source] = &fofa.Source{}
+		case "baidu":
+			a.sources[source] = &baidu.Source{}
 		}
 	}
 }
